@@ -29,6 +29,7 @@ public class SecurityConfig {
                 // .requestMatchers(HttpMethod.GET, "/legislacao/{id}").permitAll()
                 .requestMatchers(HttpMethod.POST, "/usuario/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/usuario/save").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/usuario/{id}").permitAll()
 
                 .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -36,6 +37,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return httpSecurity.build();
+
     }
 
     @Bean
